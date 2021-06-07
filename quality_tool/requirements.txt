@@ -1,0 +1,6 @@
+pydub
+simpleaudio
+keyboard
+ffmpeg
+pyyaml
+helperutils

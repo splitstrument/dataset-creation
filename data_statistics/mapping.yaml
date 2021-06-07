@@ -1,0 +1,247 @@
+accordion: other
+acoustic bass: bass
+acoustic grand piano: piano
+acoustic guitar: guitar
+acousticgtr: guitar
+acgtr: guitar
+acoustic guitar (nylon): guitar
+acoustic guitar (steel): guitar
+acousticguitar: guitar
+agogo: other
+alto sax: other
+alto saxophone: other
+applause: other
+auxiliary percussion: percussion
+backingvox: vocals
+bag pipe: other
+bamboo flute: other
+banjo: other
+baritone sax: other
+baritone saxophone: other
+bass: bass
+bass clarinet: other
+bass drum: drums
+bass guitar: other
+bassoon: other
+bird tweet: other
+blown bottle: other
+bongo: percussion
+brass: other
+brass section: other
+breath noise: other
+bright acoustic piano: piano
+bvs: vocals
+castanet: percussion
+celesta: other
+cello: other
+cello section: other
+chimes: other
+choir aahs: vocals
+chromatic percussion: percussion
+church organ: other
+claps: percussion
+clarinet: other
+clarinet section: other
+clavinet: other
+clean electric guitar: guitar
+contrabass: other
+cymbal: percussion
+darbuka: percussion
+distorted electric guitar: distorted_guitar
+distorted_guitar: distorted_guitar
+distortion guitar: distorted_guitar
+dizi: other
+double bass: other
+doumbek: percussion
+drawbar organ: other
+drum machine: drums
+drum set: drums
+drums: drums
+dulcimer: other
+elecgtr: guitar
+electric bass: bass
+electric bass (finger): bass
+electric bass (pick): bass
+electric grand piano: piano
+electric guitar (clean): guitar
+electric guitar (jazz): guitar
+electric guitar (muted): guitar
+electric piano: piano
+elecpiano: piano
+electronic organ: other
+english horn: other
+erhu: other
+ethnic: other
+excluded: excluded
+female singer: vocals
+fiddle: other
+flute: other
+flute section: other
+french horn: other
+french horn section: other
+fretless bass: bass
+fx 1 (rain): other
+fx 2 (soundtrack): other
+fx 3 (crystal): other
+fx 4 (atmosphere): other
+fx 5 (brightness): other
+fx 6 (goblins): other
+fx 7 (echoes): other
+fx 8 (sci-fi): other
+fx/processed sound: other
+gang vocals: vocals
+glockenspiel: other
+gong: percussion
+gtr: guitar
+gtr lead: guitar
+gtrs: guitar
+gtrs1: guitar
+gtrs2: guitar
+gtrz: guitar
+gu: other
+guitar: guitar
+guitar fret noise: guitar
+guitar harmonics: guitar
+guitars: guitar
+gunshot: other
+guzheng: other
+harmonica: other
+harp: other
+harpsichord: other
+helicopter: other
+honky-tonk piano: piano
+horn section: other
+instrumental: mix
+kalimba: other
+keys: piano
+keys-piano: piano
+kick drum: drums
+koto: other
+lap steel guitar: guitar
+lead 1 (square): other
+lead 2 (sawtooth): other
+lead 3 (calliope): other
+lead 4 (chiff): other
+lead 5 (charang): other
+lead 6 (voice): other
+lead 7 (fifths): other
+lead 8 (bass + lead): other
+lead gtrs: guitar
+lead guitar: guitar
+lead_vox: vocals
+leadvox: vocals
+lgtr: guitar
+liuqin: other
+lvs: vocals
+main system: other
+main vocals: vocals
+male rapper: vocals
+male singer: vocals
+male speaker: vocals
+mandolin: other
+marimba: other
+melodic tom: percussion
+melodica: other
+mix: mix
+music box: other
+muted trumpet: other
+oboe: other
+ocarina: other
+orchestra hit: other
+orchestral harp: other
+organ: other
+other: other
+oud: other
+overdriven guitar: distorted_guitar
+pad 1 (new age): other
+pad 2 (warm): other
+pad 3 (polysynth): other
+pad 4 (choir): other
+pad 5 (bowed): other
+pad 6 (metallic): other
+pad 7 (halo): other
+pad 8 (sweep): other
+pan flute: other
+percussion: percussion
+percussive: percussion
+percussive organ: percussion
+piano: piano
+piccolo: other
+pipe: other
+pizzicato strings: other
+recorder: other
+reed: other
+reed organ: other
+reverse cymbal: other
+rgtr: guitar
+rhythm: other
+rhythm guitar: guitar
+rock organ: other
+sampler: other
+scratches: other
+seashore: other
+shaker: percussion
+shakuhachi: other
+shamisen: other
+shanai: other
+sitar: other
+slap bass 1: bass
+slap bass 2: bass
+snare drum: drums
+song: mix
+soprano sax: other
+soprano saxophone: other
+sound effects: other
+steel drums: percussion
+string ensemble 1: other
+string ensemble 2: other
+string section: other
+strings: other
+synth bass 1: other
+synth bass 2: other
+synth brass 1: other
+synth brass 2: other
+synth drum: percussion
+synth lead: other
+synth pad: other
+synth strings 1: other
+synth strings 2: other
+synth voice: other
+synthesizer: other
+tabla: percussion
+tack piano: other
+taiko drum: percussion
+tambourine: percussion
+tango accordion: other
+telephone ring: other
+tenor sax: other
+tenor saxophone: other
+timpani: percussion
+tinkle bell: other
+toms: drums
+tremolo strings: other
+trombone: other
+trombone section: other
+trumpet: other
+trumpet section: other
+tuba: other
+tubular bells: other
+vibraphone: other
+viola: other
+viola section: other
+violin: other
+violin section: other
+voc: vocals
+vocal: vocals
+vocalists: vocals
+vocals: vocals
+vocals+extra: vocals
+vocals+extras: vocals
+voice oohs: vocals
+vox: vocals
+vox_chorus: vocals
+whistle: other
+woodblock: percussion
+xylophone: other
+yangqin: other
+zhongruan: other
