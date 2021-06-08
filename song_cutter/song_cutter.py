@@ -4,10 +4,10 @@ from helperutils.stemloader import StemLoader
 
 stem_loader = StemLoader()
 
-parser = argparse.ArgumentParser(description='Check amount of silence and ratio to audible data in tracks')
-parser.add_argument('--source-folder', required=True, help='path to folder containing training data')
+parser = argparse.ArgumentParser(description='Cut long file into smaller pieces')
+parser.add_argument('--source-folder', required=True, help='path to folder containing long files')
 parser.add_argument('--save-to-folder', required=True, help='path to folder to save cut songs')
-parser.add_argument('--length', required=True, help='desired song length in s')
+parser.add_argument('--length', type=int, required=True, help='desired song length in seconds')
 args = parser.parse_args()
 
 

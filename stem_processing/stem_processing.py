@@ -20,117 +20,16 @@ parser = argparse.ArgumentParser(
     description='Create hierarchical data format files including complex frequency spectrograms')
 parser.add_argument('--path', help='path to source files', required=True)
 parser.add_argument('--destination', help='path to create data format files', required=True)
-parser.add_argument('--fft_window', default=1536, type=int, help='sample size of FFT windows')
-parser.add_argument('--sample_rate', default=11025, type=int, help='target samplerate in Hz')
 parser.add_argument('--mono', type=str2bool, default=False, help='treat audio as mono')
-parser.add_argument('--generate_image', type=str2bool, default=False,
-                    help='if spectrogram image should be generated and saved')
 parser.add_argument('--job_count', default=multiprocessing.cpu_count(), type=int,
                     help='maximum number of concurrently running jobs')
 parser.add_argument('--instrument', help='the instrument to create training data for', required=True)
 parser.add_argument('--additional-instruments', default=[], nargs='*',
                     help='the instruments to to mix into the source instrument')
-parser.add_argument('--generate_spectrograms', type=str2bool, default=False, help='generate spectrograms after mixing')
 parser.add_argument('--check_quality', type=str2bool, default=True, help='check if quality markers exist')
 parser.add_argument('--sample-rates', default=[], nargs='*', help='what additional sample rates should be created')
 
 args = parser.parse_args()
-
-
-def generate_container(file, destination, fft_window, target_sample_rate, mono, generate_image):
-    global error_count
-    try:
-        audio, sample_rate = librosa.load(file, mono=mono,
-                                          sr=target_sample_rate if target_sample_rate > 0 else None)
-        spectrograms = []
-        real_stereo = isinstance(audio[0], np.ndarray)
-        if not mono and real_stereo:
-            spectrograms.append(stft_to_complex_spectrogram(
-                generate_spectrogram(destination, audio[0], '0-stereo_left', fft_window, sample_rate, generate_image)))
-            spectrograms.append(stft_to_complex_spectrogram(
-                generate_spectrogram(destination, audio[1], '1-stereo_right', fft_window, sample_rate, generate_image)))
-        else:
-            spectrograms.append(stft_to_complex_spectrogram(
-                generate_spectrogram(os.path.basename(file), audio, '0-mono', fft_window, sample_rate, generate_image)))
-
-        configuration = 'fft-window=%d_sample-rate=%d_channels=%d-%s' % (
-            fft_window, sample_rate, 1 if mono else 2, 'mono' if mono else 'stereo')
-
-        song = os.path.basename(os.path.dirname(file))
-        collection = os.path.basename(os.path.dirname(os.path.dirname(file)))
-
-        folder = os.path.join(destination, configuration, collection, song)
-        if not os.path.exists(folder):
-            try:
-                os.makedirs(folder)
-            except:
-                pass
-        path = os.path.join(folder, '%s-spectrogram_%s' % (os.path.basename(file), configuration))
-
-        save_spectrogram_data(spectrograms, path, fft_window, sample_rate, mono, real_stereo, song, collection)
-        print('Generated spectrogram %s' % path)
-    except Exception as e:
-        print('Error while generating spectrogram for %s: %s' % (file, str(e)))
-        error_count += 1
-        pass
-
-
-def generate_spectrogram(name, audio, part, fft_window, sample_rate, generate_image):
-    stft = librosa.stft(audio, fft_window)
-    if generate_image:
-        save_spectrogram_image(stft_to_real_spectrogram(stft), name, part, fft_window, sample_rate)
-    return stft
-
-
-def stft_to_real_spectrogram(stft):
-    spectrogram = np.log1p(np.abs(stft))
-    return np.array(spectrogram)[:, :, np.newaxis]
-
-
-def stft_to_complex_spectrogram(stft):
-    real_part = np.real(stft)
-    imag_part = np.imag(stft)
-    spectrogram = np.zeros((stft.shape[0], stft.shape[1], 2))
-    spectrogram[:, :, 0] = real_part
-    spectrogram[:, :, 1] = imag_part
-    return spectrogram
-
-
-def save_spectrogram_image(spectrogram, name, part, fft_window, sample_rate):
-    file_name = '%s_spectrogram_%s_fft-window[%d]_sample-rate[%d].png' % (name, part, fft_window, sample_rate)
-    real_part = spectrogram[:, :, 0]
-    cm_hot = get_cmap('plasma')
-    image = np.clip((real_part - np.min(real_part)) / (np.max(real_part) - np.min(real_part)), 0, 1)
-    with warnings.catch_warnings():
-        image = cm_hot(image)
-        warnings.simplefilter('ignore')
-        io.imsave(file_name, image)
-
-
-def save_spectrogram_data(spectrograms, file, fft_window, sample_rate, mono, real_stereo, song, collection):
-    h5f = h5py.File(file + '.h5', 'w')
-    if len(spectrograms) > 1:
-        h5f.create_dataset('spectrogram_left', data=spectrograms[0])
-        h5f.create_dataset('spectrogram_right', data=spectrograms[1])
-    else:
-        h5f.create_dataset('spectrogram', data=spectrograms[0])
-    dimensions = spectrograms[0].shape
-    h5f.create_dataset('height', data=dimensions[0])
-    h5f.create_dataset('width', data=dimensions[1])
-    h5f.create_dataset('depth', data=dimensions[2])
-    h5f.create_dataset('fft_window', data=fft_window)
-    h5f.create_dataset('sample_rate', data=sample_rate)
-    h5f.create_dataset('mono', data=mono)
-    h5f.create_dataset('stereo', data=real_stereo)
-    h5f.create_dataset('song', data=song)
-    h5f.create_dataset('collection', data=collection)
-    h5f.create_dataset('file', data=os.path.basename(file))
-    h5f.close()
-
-
-def build_destination(file, path, destination):
-    return file.new_filename(path, destination)
-
 
 exclusion_properties = ['missing', 'inaudible', 'bad_quality', 'bleed', 'mislabeled']
 necessary_properties = ['checked']
@@ -245,22 +144,5 @@ for sample_rate in args.sample_rates:
     end = time.time()
 
     print('Finished resampling in {0} seconds'.format(end - start))
-
-if args.generate_spectrograms:
-    print('\nGenerating spectrograms' % args.job_count)
-
-    start = time.time()
-    Parallel(n_jobs=args.job_count)(
-        delayed(generate_container)(
-            file,
-            args.destination,
-            args.fft_window,
-            args.sample_rate,
-            args.mono,
-            args.generate_image
-        ) for file in files)
-    end = time.time()
-
-    print('Finished generating spectrograms in %d [s] with %d errors' % ((end - start), error_count))
 
 print('\nFinished processing')

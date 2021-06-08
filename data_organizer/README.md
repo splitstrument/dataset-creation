@@ -29,7 +29,8 @@ root
 |       +-- mix.wav
 ```
 
-## Parameters
+## Parameters for `organizer.py`
+
 | Option                 | Description                                                           | Required | Default     | Example                             |
 |------------------------|-----------------------------------------------------------------------|----------|-------------|-------------------------------------|
 | --tracks               | name of the file containing the track information                     |          | tracks.yaml | --tracks=tracks.yaml                |

@@ -1,4 +1,4 @@
-# TODO fill
+# Dataset creation
 
 Each tool is contained in its own folder, although they may act on the same data and sometimes exchange information
 through YAML files. A short description for each tool follows, check the individual README files to further information.
@@ -15,6 +15,7 @@ through YAML files. A short description for each tool follows, check the individ
   * used to detect and remove silence in tracks for better training quality
 * stem_processing
   * used to mix and resample stems into training data
-  * also contains predecessor code for generating spectrograms, not in use currently TODO remove
 * song_cutter
-  * TODO
+  * used to cut long compilations into smaller tracks that are easier to handle
+  
+Be sure to check our [utils repository](https://github.com/splitstrument/utils) for additional code that is needed.

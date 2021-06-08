@@ -6,7 +6,7 @@ Tracks with a silence ratio below some given ratio can be adjusted, so the ratio
 Silences at the beginning and end of files is preferred when cutting because they interfere the least with the structure
 of the song. Adjusted tracks are exported to a separate folder as to not overwrite the source files.
 
-# Parameters
+# Parameters for `silencio.py`
 
 | Option           | Description                                             | Required              | Default      | Example                                                                 |
 |------------------|---------------------------------------------------------|-----------------------|--------------|-------------------------------------------------------------------------|

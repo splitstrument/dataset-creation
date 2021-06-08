@@ -33,7 +33,7 @@ If `marks_<instrument>.yaml` already exists, additional marks will be added to i
 
 Install `ffmpeg` or `avconv` on your system. Apparently installing ffmpeg with pip alone is no longer enough.
 
-## Parameters
+## Parameters for `quality_tool.py`
 
 | Option                   | Description                                                                                                                                         | Required | Default | Example                                          |
 |--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------|---------|--------------------------------------------------|
@@ -48,4 +48,5 @@ Install `ffmpeg` or `avconv` on your system. Apparently installing ffmpeg with p
 
 # Metadata
 
-TODO describe
+The folder `metadata` contains two mark files for piano and guitar. These can be used if you do not want to check all
+stems by yourself. These should work as long as your track folder names are the same as ours.

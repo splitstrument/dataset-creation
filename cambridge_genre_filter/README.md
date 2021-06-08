@@ -6,7 +6,8 @@ dataset. If you are interested in the general counts of genres in the original d
 
 Genre tables ripped from the above mentioned website and updated on 05.04.2021.
 
-# Parameters
+# Parameters for `genre_filter.py`
+
 
 | Option             | Description             | Required | Example                                  |
 |--------------------|-------------------------|----------|------------------------------------------|
