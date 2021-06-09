@@ -2,7 +2,7 @@
 This tool is used to move all files from different datasets to a single uniform data structure.
 
 Stems will be grouped into folders for different instruments. Check the `mapping.yaml` file in the `data-statistics`
-tool for an overview on what instrument groups exist. At this point in time many instruments are simply grouped into an
+tool for an overview on what instrument groups exist. At this point in time many instruments are simply grouped into a
 folder called `other`.
 
 Note that any pre-mixed track will be moved into an instrument folder called `mix`.
